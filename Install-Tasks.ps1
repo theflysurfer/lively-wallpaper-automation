@@ -16,10 +16,15 @@ Write-Host "=== Installing Scheduled Tasks ===" -ForegroundColor Cyan
 Write-Host ""
 
 $ScriptPath = Join-Path $PSScriptRoot "Switch-Wallpapers.ps1"
+$VbsPath = Join-Path $PSScriptRoot "Run-Hidden.vbs"
 
-# Verify script exists
+# Verify scripts exist
 if (-not (Test-Path $ScriptPath)) {
     Write-Error "Switch-Wallpapers.ps1 not found at: $ScriptPath"
+    exit 1
+}
+if (-not (Test-Path $VbsPath)) {
+    Write-Error "Run-Hidden.vbs not found at: $VbsPath"
     exit 1
 }
 
@@ -61,8 +66,10 @@ if ($ExistingTask) {
     }
 }
 
-$LivelyAction = New-ScheduledTaskAction -Execute "powershell.exe" `
-    -Argument "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$ScriptPath`" -LivelyOnly"
+# Use wscript to run VBS which launches PowerShell truly hidden (no window flash)
+$LivelyAction = New-ScheduledTaskAction -Execute "wscript.exe" `
+    -Argument "`"$VbsPath`"" `
+    -WorkingDirectory $PSScriptRoot
 
 $LivelyPrincipal = New-ScheduledTaskPrincipal -UserId $env:USERNAME -LogonType Interactive -RunLevel Limited
 

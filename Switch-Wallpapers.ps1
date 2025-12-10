@@ -113,24 +113,45 @@ function Set-LivelyWallpaper {
 function Set-LockScreenImage {
     param([string]$ImagePath)
 
-    if (-not $isAdmin) {
-        Write-Warning "Lock screen requires admin privileges"
-        return $false
-    }
-
     if (-not (Test-Path $ImagePath)) {
         Write-Warning "Lock screen image not found: $ImagePath"
         return $false
     }
 
-    $Key = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization"
-    if (-not (Test-Path $Key)) {
-        New-Item -Path $Key -Force | Out-Null
-    }
+    try {
+        # Use Windows Runtime API (works on Windows 10/11)
+        [Windows.System.UserProfile.LockScreen,Windows.System.UserProfile,ContentType=WindowsRuntime] | Out-Null
+        [Windows.Storage.StorageFile,Windows.Storage,ContentType=WindowsRuntime] | Out-Null
+        Add-Type -AssemblyName System.Runtime.WindowsRuntime
 
-    Set-ItemProperty -Path $Key -Name "LockScreenImage" -Value $ImagePath -Type String
-    Set-ItemProperty -Path $Key -Name "NoLockScreen" -Value 0 -Type DWord
-    return $true
+        $asTaskGeneric = ([System.WindowsRuntimeSystemExtensions].GetMethods() |
+            Where-Object { $_.Name -eq 'AsTask' -and $_.GetParameters().Count -eq 1 -and $_.GetParameters()[0].ParameterType.Name -eq 'IAsyncOperation`1' })[0]
+
+        Function Await($WinRtTask, $ResultType) {
+            $asTask = $asTaskGeneric.MakeGenericMethod($ResultType)
+            $netTask = $asTask.Invoke($null, @($WinRtTask))
+            $netTask.Wait(-1) | Out-Null
+            $netTask.Result
+        }
+
+        Function AwaitAction($WinRtAction) {
+            $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() |
+                Where-Object { $_.Name -eq 'AsTask' -and $_.GetParameters().Count -eq 1 -and !$_.IsGenericMethod })[0]
+            $netTask = $asTask.Invoke($null, @($WinRtAction))
+            $netTask.Wait(-1) | Out-Null
+        }
+
+        # Get StorageFile from path
+        $StorageFile = Await ([Windows.Storage.StorageFile]::GetFileFromPathAsync($ImagePath)) ([Windows.Storage.StorageFile])
+
+        # Set as lock screen
+        AwaitAction ([Windows.System.UserProfile.LockScreen]::SetImageFileAsync($StorageFile))
+
+        return $true
+    } catch {
+        Write-Warning "Lock screen error: $_"
+        return $false
+    }
 }
 
 # Get Paris time
@@ -173,6 +194,6 @@ if (-not $LivelyOnly) {
     if (Set-LockScreenImage -ImagePath $LockScreenImage) {
         Write-Host "  Lock screen: OK" -ForegroundColor Green
     } else {
-        Write-Host "  Lock screen: SKIPPED (no admin)" -ForegroundColor Yellow
+        Write-Host "  Lock screen: FAILED" -ForegroundColor Red
     }
 }
