@@ -1,5 +1,6 @@
 # Install-Tasks.ps1
-# Creates scheduled tasks for Lively wallpaper and lock screen switching
+# Creates a single scheduled task that runs daily at 4 AM (and at logon)
+# to schedule the exact sunrise/sunset wallpaper changes for the day
 # Requires Administrator privileges
 
 # Check if running as Administrator
@@ -12,23 +13,52 @@ if (-not $isAdmin) {
     exit
 }
 
-Write-Host "=== Installing Scheduled Tasks ===" -ForegroundColor Cyan
+Write-Host "=== Installing Scheduled Task ===" -ForegroundColor Cyan
 Write-Host ""
 
-$ScriptPath = Join-Path $PSScriptRoot "Switch-Wallpapers.ps1"
-$VbsPath = Join-Path $PSScriptRoot "Run-Hidden.vbs"
+$SchedulerScript = Join-Path $PSScriptRoot "Schedule-DailyTasks.ps1"
 
-# Verify scripts exist
-if (-not (Test-Path $ScriptPath)) {
-    Write-Error "Switch-Wallpapers.ps1 not found at: $ScriptPath"
-    exit 1
-}
-if (-not (Test-Path $VbsPath)) {
-    Write-Error "Run-Hidden.vbs not found at: $VbsPath"
+# Verify script exists
+if (-not (Test-Path $SchedulerScript)) {
+    Write-Error "Schedule-DailyTasks.ps1 not found at: $SchedulerScript"
     exit 1
 }
 
-# Task settings (shared)
+$TaskName = "AppaWallpaper_DailyScheduler"
+
+# Remove existing tasks
+Write-Host "Cleaning up old tasks..." -ForegroundColor Yellow
+@($TaskName, "LivelyWallpaperSunriseSunset", "AppaLockScreenSwitcher", "LivelyWallpaperDayNightSwitch") | ForEach-Object {
+    $Existing = Get-ScheduledTask -TaskName $_ -ErrorAction SilentlyContinue
+    if ($Existing) {
+        Unregister-ScheduledTask -TaskName $_ -Confirm:$false
+        Write-Host "  Removed: $_" -ForegroundColor Gray
+    }
+}
+
+# Also clean up any one-time tasks from previous runs
+@("AppaWallpaper_Sunrise", "AppaWallpaper_Sunset") | ForEach-Object {
+    $Existing = Get-ScheduledTask -TaskName $_ -ErrorAction SilentlyContinue
+    if ($Existing) {
+        Unregister-ScheduledTask -TaskName $_ -Confirm:$false
+    }
+}
+
+Write-Host ""
+Write-Host "Creating daily scheduler task..." -ForegroundColor Yellow
+
+# Action: run the scheduler script (hidden)
+$Action = New-ScheduledTaskAction -Execute "powershell.exe" `
+    -Argument "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$SchedulerScript`"" `
+    -WorkingDirectory $PSScriptRoot
+
+# Triggers: at 4 AM daily + at logon
+$Triggers = @(
+    (New-ScheduledTaskTrigger -Daily -At "04:00"),
+    (New-ScheduledTaskTrigger -AtLogOn)
+)
+
+# Settings
 $Settings = New-ScheduledTaskSettingsSet `
     -AllowStartIfOnBatteries `
     -DontStopIfGoingOnBatteries `
@@ -36,93 +66,29 @@ $Settings = New-ScheduledTaskSettingsSet `
     -ExecutionTimeLimit (New-TimeSpan -Minutes 5) `
     -MultipleInstances IgnoreNew
 
-# Triggers: every hour from 5h to 22h + at logon
-$Triggers = @()
-for ($hour = 5; $hour -le 22; $hour++) {
-    $TimeString = "{0:D2}:00" -f $hour
-    $Triggers += New-ScheduledTaskTrigger -Daily -At $TimeString
-}
-$Triggers += New-ScheduledTaskTrigger -AtLogOn
+# Principal (run as current user)
+$Principal = New-ScheduledTaskPrincipal -UserId $env:USERNAME -LogonType Interactive -RunLevel Limited
 
-# ========================================
-# Task 1: Lively Wallpaper (user level)
-# ========================================
-$LivelyTaskName = "LivelyWallpaperSunriseSunset"
-
-Write-Host "[1/2] Creating Lively wallpaper task..." -ForegroundColor Yellow
-
-# Remove existing task
-$ExistingTask = Get-ScheduledTask -TaskName $LivelyTaskName -ErrorAction SilentlyContinue
-if ($ExistingTask) {
-    Unregister-ScheduledTask -TaskName $LivelyTaskName -Confirm:$false
-    Write-Host "  Removed existing task" -ForegroundColor Gray
-}
-
-# Also remove old task names
-@("LivelyWallpaperDayNightSwitch") | ForEach-Object {
-    $OldTask = Get-ScheduledTask -TaskName $_ -ErrorAction SilentlyContinue
-    if ($OldTask) {
-        Unregister-ScheduledTask -TaskName $_ -Confirm:$false
-    }
-}
-
-# Use wscript to run VBS which launches PowerShell truly hidden (no window flash)
-$LivelyAction = New-ScheduledTaskAction -Execute "wscript.exe" `
-    -Argument "`"$VbsPath`"" `
-    -WorkingDirectory $PSScriptRoot
-
-$LivelyPrincipal = New-ScheduledTaskPrincipal -UserId $env:USERNAME -LogonType Interactive -RunLevel Limited
-
-Register-ScheduledTask -TaskName $LivelyTaskName `
-    -Action $LivelyAction `
+# Register task
+Register-ScheduledTask -TaskName $TaskName `
+    -Action $Action `
     -Trigger $Triggers `
     -Settings $Settings `
-    -Principal $LivelyPrincipal `
-    -Description "Switches Lively wallpaper based on Paris sunrise/sunset times" | Out-Null
+    -Principal $Principal `
+    -Description "Daily scheduler for Appa wallpaper changes at sunrise/sunset (Paris time)" | Out-Null
 
-Write-Host "  Created: $LivelyTaskName" -ForegroundColor Green
+Write-Host "  Created: $TaskName" -ForegroundColor Green
 
-# ========================================
-# Task 2: Lock Screen (SYSTEM level)
-# ========================================
-$LockScreenTaskName = "AppaLockScreenSwitcher"
-
-Write-Host "[2/2] Creating lock screen task..." -ForegroundColor Yellow
-
-# Remove existing task
-$ExistingTask = Get-ScheduledTask -TaskName $LockScreenTaskName -ErrorAction SilentlyContinue
-if ($ExistingTask) {
-    Unregister-ScheduledTask -TaskName $LockScreenTaskName -Confirm:$false
-    Write-Host "  Removed existing task" -ForegroundColor Gray
-}
-
-$LockScreenAction = New-ScheduledTaskAction -Execute "powershell.exe" `
-    -Argument "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$ScriptPath`" -LockScreenOnly"
-
-$LockScreenPrincipal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest
-
-Register-ScheduledTask -TaskName $LockScreenTaskName `
-    -Action $LockScreenAction `
-    -Trigger $Triggers `
-    -Settings $Settings `
-    -Principal $LockScreenPrincipal `
-    -Description "Switches Windows lock screen based on Paris sunrise/sunset times" | Out-Null
-
-Write-Host "  Created: $LockScreenTaskName" -ForegroundColor Green
-
-# ========================================
-# Summary
-# ========================================
 Write-Host ""
-Write-Host "=== Tasks Installed ===" -ForegroundColor Green
+Write-Host "=== Installation Complete ===" -ForegroundColor Green
 Write-Host ""
-Write-Host "Scheduled tasks:" -ForegroundColor Cyan
-Write-Host "  - $LivelyTaskName (runs as $env:USERNAME)"
-Write-Host "  - $LockScreenTaskName (runs as SYSTEM)"
+Write-Host "How it works:" -ForegroundColor Cyan
+Write-Host "  1. At 4 AM (or login), calculates today's sunrise/sunset for Paris"
+Write-Host "  2. Schedules 2 one-time tasks at exact sunrise and sunset times"
+Write-Host "  3. Those tasks change wallpaper + lock screen silently"
 Write-Host ""
-Write-Host "Schedule:" -ForegroundColor Cyan
-Write-Host "  - Every hour from 5:00 to 22:00"
-Write-Host "  - At user logon"
+Write-Host "Running initial setup now..." -ForegroundColor Yellow
 Write-Host ""
-Write-Host "Test now: .\Switch-Wallpapers.ps1" -ForegroundColor Yellow
-Write-Host ""
+
+# Run the scheduler now to set up today's tasks
+& $SchedulerScript

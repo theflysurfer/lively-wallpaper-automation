@@ -1,7 +1,9 @@
 # Switch-Wallpapers.ps1
-# Switches Lively wallpaper and Windows lock screen based on Paris sunrise/sunset
+# Switches Lively wallpaper and Windows lock screen to Day or Night mode
 
 param(
+    [ValidateSet("Day", "Night")]
+    [string]$Period,
     [switch]$LivelyOnly,
     [switch]$LockScreenOnly
 )
@@ -12,33 +14,6 @@ $LivelyNightWallpaper = "$env:LOCALAPPDATA\Lively Wallpaper\Library\wallpapers\a
 $LockScreenDayImage = "$env:USERPROFILE\Pictures\Appa Lockscreen\appa-day-lockscreen.jpg"
 $LockScreenNightImage = "$env:USERPROFILE\Pictures\Appa Lockscreen\appa-night-lockscreen.jpg"
 
-# Paris coordinates
-$Latitude = 48.8566
-$Longitude = 2.3522
-
-# Check admin status for lock screen
-$isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-
-function Get-SunriseSunset {
-    param([double]$Lat, [double]$Lon, [DateTime]$Date)
-
-    $DateString = $Date.ToString("yyyy-MM-dd")
-    $Url = "https://api.sunrise-sunset.org/json?lat=$Lat&lng=$Lon&date=$DateString&formatted=0"
-
-    try {
-        $Response = Invoke-RestMethod -Uri $Url -TimeoutSec 10
-        if ($Response.status -eq "OK") {
-            return @{
-                Sunrise = [DateTime]::Parse($Response.results.sunrise)
-                Sunset = [DateTime]::Parse($Response.results.sunset)
-            }
-        }
-    } catch {
-        Write-Warning "API error: $_"
-    }
-    return $null
-}
-
 function Find-LivelyExe {
     $Paths = @(
         "$env:LOCALAPPDATA\Programs\Lively Wallpaper\Lively.exe"
@@ -46,22 +21,18 @@ function Find-LivelyExe {
         "$env:ProgramFiles\Lively Wallpaper\Lively.exe"
     )
 
-    # Check running process first
     $Process = Get-Process -Name "Lively" -ErrorAction SilentlyContinue |
         Where-Object { $_.Path -like "*\Lively.exe" } |
         Select-Object -First 1
     if ($Process) { return $Process.Path }
 
-    # Check known paths
     foreach ($Path in $Paths) {
         if (Test-Path $Path) { return $Path }
     }
-
     return $null
 }
 
 function Restart-ExplorerIfNeeded {
-    # Check Lively logs for WorkerW error
     $LogFolder = "$env:LOCALAPPDATA\Lively Wallpaper\logs"
     $LatestLog = Get-ChildItem $LogFolder -Filter "*.txt" -ErrorAction SilentlyContinue |
         Sort-Object LastWriteTime -Descending |
@@ -99,7 +70,6 @@ function Set-LivelyWallpaper {
         $null = & $LivelyExe setwp --file "$WallpaperPath" 2>&1
         Start-Sleep 2
 
-        # Check if it failed and retry after Explorer restart
         if (Restart-ExplorerIfNeeded) {
             $null = & $LivelyExe setwp --file "$WallpaperPath" 2>&1
         }
@@ -119,7 +89,6 @@ function Set-LockScreenImage {
     }
 
     try {
-        # Use Windows Runtime API (works on Windows 10/11)
         [Windows.System.UserProfile.LockScreen,Windows.System.UserProfile,ContentType=WindowsRuntime] | Out-Null
         [Windows.Storage.StorageFile,Windows.Storage,ContentType=WindowsRuntime] | Out-Null
         Add-Type -AssemblyName System.Runtime.WindowsRuntime
@@ -141,10 +110,7 @@ function Set-LockScreenImage {
             $netTask.Wait(-1) | Out-Null
         }
 
-        # Get StorageFile from path
         $StorageFile = Await ([Windows.Storage.StorageFile]::GetFileFromPathAsync($ImagePath)) ([Windows.Storage.StorageFile])
-
-        # Set as lock screen
         AwaitAction ([Windows.System.UserProfile.LockScreen]::SetImageFileAsync($StorageFile))
 
         return $true
@@ -154,32 +120,37 @@ function Set-LockScreenImage {
     }
 }
 
-# Get Paris time
-$ParisTimeZone = [System.TimeZoneInfo]::FindSystemTimeZoneById("Romance Standard Time")
-$ParisTime = [System.TimeZoneInfo]::ConvertTime([DateTime]::Now, $ParisTimeZone)
+# If no period specified, calculate from sunrise/sunset
+if (-not $Period) {
+    $Latitude = 48.8566
+    $Longitude = 2.3522
+    $ParisTimeZone = [System.TimeZoneInfo]::FindSystemTimeZoneById("Romance Standard Time")
+    $ParisTime = [System.TimeZoneInfo]::ConvertTime([DateTime]::Now, $ParisTimeZone)
 
-Write-Host "Paris time: $($ParisTime.ToString('HH:mm:ss'))"
+    try {
+        $DateString = $ParisTime.ToString("yyyy-MM-dd")
+        $Url = "https://api.sunrise-sunset.org/json?lat=$Latitude&lng=$Longitude&date=$DateString&formatted=0"
+        $Response = Invoke-RestMethod -Uri $Url -TimeoutSec 10
 
-# Get sunrise/sunset
-$SunTimes = Get-SunriseSunset -Lat $Latitude -Lon $Longitude -Date $ParisTime
-
-if ($SunTimes) {
-    $Sunrise = [System.TimeZoneInfo]::ConvertTime($SunTimes.Sunrise, $ParisTimeZone)
-    $Sunset = [System.TimeZoneInfo]::ConvertTime($SunTimes.Sunset, $ParisTimeZone)
-    Write-Host "Sunrise: $($Sunrise.ToString('HH:mm')) | Sunset: $($Sunset.ToString('HH:mm'))"
-    $IsDay = ($ParisTime -ge $Sunrise -and $ParisTime -lt $Sunset)
-} else {
-    Write-Warning "Using fallback times (7h-19h)"
-    $IsDay = ($ParisTime.Hour -ge 7 -and $ParisTime.Hour -lt 19)
+        if ($Response.status -eq "OK") {
+            $Sunrise = [System.TimeZoneInfo]::ConvertTime([DateTime]::Parse($Response.results.sunrise), $ParisTimeZone)
+            $Sunset = [System.TimeZoneInfo]::ConvertTime([DateTime]::Parse($Response.results.sunset), $ParisTimeZone)
+            $Period = if ($ParisTime -ge $Sunrise -and $ParisTime -lt $Sunset) { "Day" } else { "Night" }
+        } else {
+            $Period = if ($ParisTime.Hour -ge 7 -and $ParisTime.Hour -lt 19) { "Day" } else { "Night" }
+        }
+    } catch {
+        $Period = if ($ParisTime.Hour -ge 7 -and $ParisTime.Hour -lt 19) { "Day" } else { "Night" }
+    }
 }
 
-$Period = if ($IsDay) { "Day" } else { "Night" }
-Write-Host "Period: $Period" -ForegroundColor $(if ($IsDay) { "Yellow" } else { "Blue" })
+Write-Host "Period: $Period" -ForegroundColor $(if ($Period -eq "Day") { "Yellow" } else { "Blue" })
 
-# Set wallpapers
-$LivelyWallpaper = if ($IsDay) { $LivelyDayWallpaper } else { $LivelyNightWallpaper }
-$LockScreenImage = if ($IsDay) { $LockScreenDayImage } else { $LockScreenNightImage }
+# Select wallpapers based on period
+$LivelyWallpaper = if ($Period -eq "Day") { $LivelyDayWallpaper } else { $LivelyNightWallpaper }
+$LockScreenImage = if ($Period -eq "Day") { $LockScreenDayImage } else { $LockScreenNightImage }
 
+# Apply wallpapers
 if (-not $LockScreenOnly) {
     Write-Host "Setting Lively wallpaper..."
     if (Set-LivelyWallpaper -WallpaperPath $LivelyWallpaper) {
