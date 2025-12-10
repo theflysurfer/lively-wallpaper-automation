@@ -60,6 +60,27 @@ function Find-LivelyExe {
     return $null
 }
 
+function Restart-ExplorerIfNeeded {
+    # Check Lively logs for WorkerW error
+    $LogFolder = "$env:LOCALAPPDATA\Lively Wallpaper\logs"
+    $LatestLog = Get-ChildItem $LogFolder -Filter "*.txt" -ErrorAction SilentlyContinue |
+        Sort-Object LastWriteTime -Descending |
+        Select-Object -First 1
+
+    if ($LatestLog) {
+        $RecentContent = Get-Content $LatestLog.FullName -Tail 20 -ErrorAction SilentlyContinue
+        if ($RecentContent -match "Failed to set wallpaper as child of WorkerW") {
+            Write-Host "  Detected WorkerW error, restarting Explorer..." -ForegroundColor Yellow
+            Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue
+            Start-Sleep 3
+            Start-Process explorer
+            Start-Sleep 2
+            return $true
+        }
+    }
+    return $false
+}
+
 function Set-LivelyWallpaper {
     param([string]$WallpaperPath)
 
@@ -76,6 +97,12 @@ function Set-LivelyWallpaper {
 
     try {
         $null = & $LivelyExe setwp --file "$WallpaperPath" 2>&1
+        Start-Sleep 2
+
+        # Check if it failed and retry after Explorer restart
+        if (Restart-ExplorerIfNeeded) {
+            $null = & $LivelyExe setwp --file "$WallpaperPath" 2>&1
+        }
         return $true
     } catch {
         Write-Warning "Lively error: $_"
