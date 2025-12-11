@@ -9,10 +9,11 @@ param(
 )
 
 # Configuration
+$ScriptFolder = $PSScriptRoot
 $LivelyDayWallpaper = "$env:LOCALAPPDATA\Lively Wallpaper\Library\wallpapers\appa-day"
 $LivelyNightWallpaper = "$env:LOCALAPPDATA\Lively Wallpaper\Library\wallpapers\appa-night"
-$LockScreenDayImage = "$env:USERPROFILE\Pictures\Appa Lockscreen\appa-day-lockscreen.jpg"
-$LockScreenNightImage = "$env:USERPROFILE\Pictures\Appa Lockscreen\appa-night-lockscreen.jpg"
+$LockScreenDayGif = "$ScriptFolder\assets\lockscreen\appa-day.gif"
+$LockScreenNightGif = "$ScriptFolder\assets\lockscreen\appa-night.gif"
 
 function Find-LivelyExe {
     $Paths = @(
@@ -80,42 +81,69 @@ function Set-LivelyWallpaper {
     }
 }
 
-function Set-LockScreenImage {
-    param([string]$ImagePath)
+function Set-GifLockScreen {
+    param([string]$GifPath)
 
-    if (-not (Test-Path $ImagePath)) {
-        Write-Warning "Lock screen image not found: $ImagePath"
+    if (-not (Test-Path $GifPath)) {
+        Write-Warning "GIF not found: $GifPath"
         return $false
     }
 
+    # Get current user SID
+    $UserSID = [System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value
+
+    # Paths (matching LockscreenGif exactly)
+    $PermanentFolder = "$env:USERPROFILE\Pictures\LockscreenGif"
+    $PermanentPath = "$PermanentFolder\wallpaper.jpg"  # LockscreenGif uses .jpg extension
+    $SystemCachePath = "C:\ProgramData\Microsoft\Windows\SystemData\$UserSID\ReadOnly"
+
     try {
-        [Windows.System.UserProfile.LockScreen,Windows.System.UserProfile,ContentType=WindowsRuntime] | Out-Null
-        [Windows.Storage.StorageFile,Windows.Storage,ContentType=WindowsRuntime] | Out-Null
-        Add-Type -AssemblyName System.Runtime.WindowsRuntime
-
-        $asTaskGeneric = ([System.WindowsRuntimeSystemExtensions].GetMethods() |
-            Where-Object { $_.Name -eq 'AsTask' -and $_.GetParameters().Count -eq 1 -and $_.GetParameters()[0].ParameterType.Name -eq 'IAsyncOperation`1' })[0]
-
-        Function Await($WinRtTask, $ResultType) {
-            $asTask = $asTaskGeneric.MakeGenericMethod($ResultType)
-            $netTask = $asTask.Invoke($null, @($WinRtTask))
-            $netTask.Wait(-1) | Out-Null
-            $netTask.Result
+        # Create permanent folder
+        if (-not (Test-Path $PermanentFolder)) {
+            New-Item -ItemType Directory -Path $PermanentFolder -Force | Out-Null
         }
 
-        Function AwaitAction($WinRtAction) {
-            $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() |
-                Where-Object { $_.Name -eq 'AsTask' -and $_.GetParameters().Count -eq 1 -and !$_.IsGenericMethod })[0]
-            $netTask = $asTask.Invoke($null, @($WinRtAction))
-            $netTask.Wait(-1) | Out-Null
-        }
+        # Copy GIF to permanent location (as wallpaper.jpg like LockscreenGif)
+        Copy-Item -Path $GifPath -Destination $PermanentPath -Force
 
-        $StorageFile = Await ([Windows.Storage.StorageFile]::GetFileFromPathAsync($ImagePath)) ([Windows.Storage.StorageFile])
-        AwaitAction ([Windows.System.UserProfile.LockScreen]::SetImageFileAsync($StorageFile))
+        # Set registry (PersonalizationCSP) - requires admin
+        $RegPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP"
+        if (-not (Test-Path $RegPath)) {
+            New-Item -Path $RegPath -Force | Out-Null
+        }
+        Set-ItemProperty -Path $RegPath -Name "LockScreenImagePath" -Value $PermanentPath -Type String -ErrorAction SilentlyContinue
+        Set-ItemProperty -Path $RegPath -Name "LockScreenImageUrl" -Value $PermanentPath -Type String -ErrorAction SilentlyContinue
+        Set-ItemProperty -Path $RegPath -Name "LockScreenImageStatus" -Value 1 -Type DWord -ErrorAction SilentlyContinue
+
+        # Take ownership of entire ReadOnly folder first (like LockscreenGif does)
+        if (Test-Path $SystemCachePath) {
+            & takeown /f "$SystemCachePath" /r /a 2>$null | Out-Null
+            & icacls "$SystemCachePath" /grant "*S-1-1-0:(F)" /T /C 2>$null | Out-Null
+
+            # Get screen resolution in LockscreenGif format (0000_0000)
+            Add-Type -AssemblyName System.Windows.Forms
+            $screen = [System.Windows.Forms.Screen]::PrimaryScreen
+            $resolution = "{0:0000}_{1:0000}" -f $screen.Bounds.Width, $screen.Bounds.Height
+
+            # Copy to SUBFOLDERS only (LockscreenGif uses Directory.EnumerateDirectories)
+            $subfolders = Get-ChildItem $SystemCachePath -Directory -ErrorAction SilentlyContinue
+
+            foreach ($folder in $subfolders) {
+                $folderPath = $folder.FullName
+
+                # Copy main LockScreen.jpg
+                $mainFile = "$folderPath\LockScreen.jpg"
+                Copy-Item -Path $GifPath -Destination $mainFile -Force -ErrorAction SilentlyContinue
+
+                # Copy resolution-specific file with correct format
+                $resFile = "$folderPath\LockScreen___${resolution}_notdimmed.jpg"
+                Copy-Item -Path $GifPath -Destination $resFile -Force -ErrorAction SilentlyContinue
+            }
+        }
 
         return $true
     } catch {
-        Write-Warning "Lock screen error: $_"
+        Write-Warning "GIF lock screen error: $_"
         return $false
     }
 }
@@ -148,7 +176,7 @@ Write-Host "Period: $Period" -ForegroundColor $(if ($Period -eq "Day") { "Yellow
 
 # Select wallpapers based on period
 $LivelyWallpaper = if ($Period -eq "Day") { $LivelyDayWallpaper } else { $LivelyNightWallpaper }
-$LockScreenImage = if ($Period -eq "Day") { $LockScreenDayImage } else { $LockScreenNightImage }
+$LockScreenGif = if ($Period -eq "Day") { $LockScreenDayGif } else { $LockScreenNightGif }
 
 # Apply wallpapers
 if (-not $LockScreenOnly) {
@@ -161,8 +189,8 @@ if (-not $LockScreenOnly) {
 }
 
 if (-not $LivelyOnly) {
-    Write-Host "Setting lock screen..."
-    if (Set-LockScreenImage -ImagePath $LockScreenImage) {
+    Write-Host "Setting GIF lock screen..."
+    if (Set-GifLockScreen -GifPath $LockScreenGif) {
         Write-Host "  Lock screen: OK" -ForegroundColor Green
     } else {
         Write-Host "  Lock screen: FAILED" -ForegroundColor Red
