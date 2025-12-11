@@ -15,8 +15,8 @@ $LivelyNightWallpaper = "$env:LOCALAPPDATA\Lively Wallpaper\Library\wallpapers\a
 # GIF lock screen files (both small and large work, using large for better quality)
 $LockScreenDayGif = "$ScriptFolder\assets\lockscreen-gif\appa-day.gif"
 $LockScreenNightGif = "$ScriptFolder\assets\lockscreen-gif\appa-night.gif"
-# LockscreenGif.exe path (bundled with project)
-$LockscreenGifExe = "$ScriptFolder\LockscreenGif\LockscreenGif.exe"
+# Direct lock screen setter script
+$SetLockScreenScript = "$ScriptFolder\Set-LockScreenDirect.ps1"
 
 function Find-LivelyExe {
     $Paths = @(
@@ -92,38 +92,27 @@ function Set-GifLockScreen {
         return $false
     }
 
-    # LockscreenGif reads from Pictures\LockscreenGif\wallpaper.gif
-    $LockscreenGifFolder = "$env:USERPROFILE\Pictures\LockscreenGif"
-    $WallpaperPath = "$LockscreenGifFolder\wallpaper.gif"
+    # Resolve to absolute path
+    $GifPath = (Resolve-Path $GifPath).Path
+
+    if (-not (Test-Path $SetLockScreenScript)) {
+        Write-Warning "Set-LockScreenDirect.ps1 not found at: $SetLockScreenScript"
+        return $false
+    }
 
     try {
-        # Create folder if needed
-        if (-not (Test-Path $LockscreenGifFolder)) {
-            New-Item -ItemType Directory -Path $LockscreenGifFolder -Force | Out-Null
-        }
+        # Run the direct lock screen setter with admin rights
+        # Use -WindowStyle Hidden for silent operation
+        $arguments = "-ExecutionPolicy Bypass -File `"$SetLockScreenScript`" -GifPath `"$GifPath`""
+        $process = Start-Process powershell -ArgumentList $arguments -Verb RunAs -Wait -PassThru -WindowStyle Hidden
 
-        # Copy GIF to the location LockscreenGif expects
-        Copy-Item -Path $GifPath -Destination $WallpaperPath -Force
-        Write-Host "  Copied GIF to: $WallpaperPath"
-
-        # Run LockscreenGif.exe to apply it (requires admin)
-        if (Test-Path $LockscreenGifExe) {
-            # LockscreenGif runs and applies the wallpaper.gif automatically
-            $process = Start-Process -FilePath $LockscreenGifExe -PassThru -WindowStyle Hidden
-            Start-Sleep -Seconds 3
-
-            # Kill the process after it has applied the lockscreen
-            if (-not $process.HasExited) {
-                Stop-Process -Id $process.Id -Force -ErrorAction SilentlyContinue
-            }
-            Write-Host "  LockscreenGif applied"
+        if ($process.ExitCode -eq 0) {
+            Write-Host "  Lock screen updated directly"
+            return $true
         } else {
-            Write-Warning "LockscreenGif.exe not found at: $LockscreenGifExe"
-            Write-Warning "Please run LockscreenGif manually to apply the GIF"
+            Write-Warning "Lock screen script exited with code: $($process.ExitCode)"
             return $false
         }
-
-        return $true
     } catch {
         Write-Warning "GIF lock screen error: $_"
         return $false
