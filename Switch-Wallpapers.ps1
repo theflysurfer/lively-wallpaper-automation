@@ -12,8 +12,11 @@ param(
 $ScriptFolder = $PSScriptRoot
 $LivelyDayWallpaper = "$env:LOCALAPPDATA\Lively Wallpaper\Library\wallpapers\appa-day"
 $LivelyNightWallpaper = "$env:LOCALAPPDATA\Lively Wallpaper\Library\wallpapers\appa-night"
-$LockScreenDayGif = "$ScriptFolder\assets\lockscreen\appa-day.gif"
-$LockScreenNightGif = "$ScriptFolder\assets\lockscreen\appa-night.gif"
+# GIF lock screen files (both small and large work, using large for better quality)
+$LockScreenDayGif = "$ScriptFolder\assets\lockscreen-gif\appa-day.gif"
+$LockScreenNightGif = "$ScriptFolder\assets\lockscreen-gif\appa-night.gif"
+# LockscreenGif.exe path (bundled with project)
+$LockscreenGifExe = "$ScriptFolder\LockscreenGif\LockscreenGif.exe"
 
 function Find-LivelyExe {
     $Paths = @(
@@ -89,56 +92,35 @@ function Set-GifLockScreen {
         return $false
     }
 
-    # Get current user SID
-    $UserSID = [System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value
-
-    # Paths (matching LockscreenGif exactly)
-    $PermanentFolder = "$env:USERPROFILE\Pictures\LockscreenGif"
-    $PermanentPath = "$PermanentFolder\wallpaper.jpg"  # LockscreenGif uses .jpg extension
-    $SystemCachePath = "C:\ProgramData\Microsoft\Windows\SystemData\$UserSID\ReadOnly"
+    # LockscreenGif reads from Pictures\LockscreenGif\wallpaper.gif
+    $LockscreenGifFolder = "$env:USERPROFILE\Pictures\LockscreenGif"
+    $WallpaperPath = "$LockscreenGifFolder\wallpaper.gif"
 
     try {
-        # Create permanent folder
-        if (-not (Test-Path $PermanentFolder)) {
-            New-Item -ItemType Directory -Path $PermanentFolder -Force | Out-Null
+        # Create folder if needed
+        if (-not (Test-Path $LockscreenGifFolder)) {
+            New-Item -ItemType Directory -Path $LockscreenGifFolder -Force | Out-Null
         }
 
-        # Copy GIF to permanent location (as wallpaper.jpg like LockscreenGif)
-        Copy-Item -Path $GifPath -Destination $PermanentPath -Force
+        # Copy GIF to the location LockscreenGif expects
+        Copy-Item -Path $GifPath -Destination $WallpaperPath -Force
+        Write-Host "  Copied GIF to: $WallpaperPath"
 
-        # Set registry (PersonalizationCSP) - requires admin
-        $RegPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP"
-        if (-not (Test-Path $RegPath)) {
-            New-Item -Path $RegPath -Force | Out-Null
-        }
-        Set-ItemProperty -Path $RegPath -Name "LockScreenImagePath" -Value $PermanentPath -Type String -ErrorAction SilentlyContinue
-        Set-ItemProperty -Path $RegPath -Name "LockScreenImageUrl" -Value $PermanentPath -Type String -ErrorAction SilentlyContinue
-        Set-ItemProperty -Path $RegPath -Name "LockScreenImageStatus" -Value 1 -Type DWord -ErrorAction SilentlyContinue
+        # Run LockscreenGif.exe to apply it (requires admin)
+        if (Test-Path $LockscreenGifExe) {
+            # LockscreenGif runs and applies the wallpaper.gif automatically
+            $process = Start-Process -FilePath $LockscreenGifExe -PassThru -WindowStyle Hidden
+            Start-Sleep -Seconds 3
 
-        # Take ownership of entire ReadOnly folder first (like LockscreenGif does)
-        if (Test-Path $SystemCachePath) {
-            & takeown /f "$SystemCachePath" /r /a 2>$null | Out-Null
-            & icacls "$SystemCachePath" /grant "*S-1-1-0:(F)" /T /C 2>$null | Out-Null
-
-            # Get screen resolution in LockscreenGif format (0000_0000)
-            Add-Type -AssemblyName System.Windows.Forms
-            $screen = [System.Windows.Forms.Screen]::PrimaryScreen
-            $resolution = "{0:0000}_{1:0000}" -f $screen.Bounds.Width, $screen.Bounds.Height
-
-            # Copy to SUBFOLDERS only (LockscreenGif uses Directory.EnumerateDirectories)
-            $subfolders = Get-ChildItem $SystemCachePath -Directory -ErrorAction SilentlyContinue
-
-            foreach ($folder in $subfolders) {
-                $folderPath = $folder.FullName
-
-                # Copy main LockScreen.jpg
-                $mainFile = "$folderPath\LockScreen.jpg"
-                Copy-Item -Path $GifPath -Destination $mainFile -Force -ErrorAction SilentlyContinue
-
-                # Copy resolution-specific file with correct format
-                $resFile = "$folderPath\LockScreen___${resolution}_notdimmed.jpg"
-                Copy-Item -Path $GifPath -Destination $resFile -Force -ErrorAction SilentlyContinue
+            # Kill the process after it has applied the lockscreen
+            if (-not $process.HasExited) {
+                Stop-Process -Id $process.Id -Force -ErrorAction SilentlyContinue
             }
+            Write-Host "  LockscreenGif applied"
+        } else {
+            Write-Warning "LockscreenGif.exe not found at: $LockscreenGifExe"
+            Write-Warning "Please run LockscreenGif manually to apply the GIF"
+            return $false
         }
 
         return $true

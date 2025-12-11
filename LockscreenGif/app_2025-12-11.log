@@ -1,0 +1,354 @@
+﻿2025-12-11 10:23:49 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 10:26:21 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 11:42:03 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 11:42:13 [INFO] Trying to set lockscreen
+2025-12-11 11:42:13 [INFO] User SID: S-1-5-21-786234258-1060283338-1101951430-1001. CurrentImage: C:\Users\julien\Pictures\LockscreenGif\wallpaper.gif
+2025-12-11 11:42:13 [INFO] Permissions prior to taking ownership
+2025-12-11 11:42:13 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 11:42:13 [INFO]   Tout le monde: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 11:42:13 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 11:42:13 [INFO]   XPS15\julien: FullControl Allow (Inherit:ContainerInherit, ObjectInherit, Propagate:None)
+2025-12-11 11:42:13 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 11:42:17 [INFO] Permissions post taking ownership
+2025-12-11 11:42:17 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 11:42:17 [INFO]   Tout le monde: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 11:42:17 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 11:42:17 [INFO]   XPS15\julien: FullControl Allow (Inherit:ContainerInherit, ObjectInherit, Propagate:None)
+2025-12-11 11:42:17 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 11:42:17 [INFO] CreateDimmedFiles: Lockscreen images found in paths: C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z
+2025-12-11 11:42:17 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen.jpg
+2025-12-11 11:42:17 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 11:42:17 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen.jpg
+2025-12-11 11:42:17 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 11:42:17 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg
+2025-12-11 11:42:17 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 11:42:18 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg
+2025-12-11 11:42:18 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1366x768_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1440x900_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1920x1080_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___2560x1440_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___3840x2160_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___0108_0108.jpg -> image/x-png
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___0151_0151.jpg -> image/x-png
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___0194_0194.jpg -> image/x-png
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1366x768_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1440x900_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1920x1080_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___2560x1440_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___2560_1440_notdimmed.jpg -> image/x-png
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___2560_1600_notdimmed.jpg -> image/x-png
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___3840x2160_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___3840_2400_notdimmed.jpg -> image/x-png
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___0108_0108.jpg -> image/pjpeg
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___0151_0151.jpg -> image/pjpeg
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___0194_0194.jpg -> image/pjpeg
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1366x768_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1440x900_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1920x1080_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___2560x1440_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___3840x2160_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___0108_0108.jpg -> image/x-png
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___0151_0151.jpg -> image/x-png
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___0194_0194.jpg -> image/x-png
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1400_1050_notdimmed.jpg -> image/pjpeg
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1440_notdimmed.jpg -> image/pjpeg
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600.jpg -> image/pjpeg
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600_notdimmed.jpg -> image/pjpeg
+2025-12-11 11:42:18 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___3840_2400_notdimmed.jpg -> image/pjpeg
+2025-12-11 11:42:18 [INFO] Successfully set lockscreen
+2025-12-11 11:50:36 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:02:49 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:03:31 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:04:32 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:04:55 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:05:47 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:06:33 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:07:20 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:08:06 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:11:36 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:12:08 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:12:15 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 12:12:50 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 13:16:06 [INFO] App starting up. Running on Windows Microsoft Windows NT 10.0.26200.0, Language français (France)
+2025-12-11 14:02:56 [INFO] Trying to set lockscreen
+2025-12-11 14:02:56 [INFO] User SID: S-1-5-21-786234258-1060283338-1101951430-1001. CurrentImage: C:\Users\julien\Pictures\LockscreenGif\wallpaper.gif
+2025-12-11 14:02:56 [INFO] Permissions prior to taking ownership
+2025-12-11 14:02:56 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 14:02:56 [INFO]   Tout le monde: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:02:56 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:02:56 [INFO]   XPS15\julien: Read, Synchronize Allow (Inherit:None, Propagate:None)
+2025-12-11 14:02:56 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:03:03 [INFO] Permissions post taking ownership
+2025-12-11 14:03:03 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 14:03:03 [INFO]   Tout le monde: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:03:03 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:03:03 [INFO]   XPS15\julien: Read, Synchronize Allow (Inherit:None, Propagate:None)
+2025-12-11 14:03:03 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:03:03 [INFO] CreateDimmedFiles: Lockscreen images found in paths: C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z
+2025-12-11 14:03:03 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen.jpg
+2025-12-11 14:03:04 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 14:03:04 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen.jpg
+2025-12-11 14:03:04 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 14:03:04 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg
+2025-12-11 14:03:04 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 14:03:04 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg
+2025-12-11 14:03:04 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1366x768_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1440x900_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1920x1080_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___2560x1440_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___3840x2160_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___0108_0108.jpg -> image/x-png
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___0151_0151.jpg -> image/x-png
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___0194_0194.jpg -> image/x-png
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1366x768_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1440x900_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1920x1080_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___2560x1440_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___2560_1600_notdimmed.jpg -> image/x-png
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___3840x2160_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___3840_2400_notdimmed.jpg -> image/x-png
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___0108_0108.jpg -> image/pjpeg
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___0151_0151.jpg -> image/pjpeg
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___0194_0194.jpg -> image/pjpeg
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1366x768_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1440x900_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1920x1080_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___2560x1440_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___3840x2160_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___0108_0108.jpg -> image/x-png
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___0151_0151.jpg -> image/x-png
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___0194_0194.jpg -> image/x-png
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1400_1050_notdimmed.jpg -> image/pjpeg
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600.jpg -> image/pjpeg
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600_notdimmed.jpg -> image/pjpeg
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 14:03:04 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___3840_2400_notdimmed.jpg -> image/pjpeg
+2025-12-11 14:03:04 [INFO] Successfully set lockscreen
+2025-12-11 14:04:42 [INFO] Trying to set lockscreen
+2025-12-11 14:04:42 [INFO] User SID: S-1-5-21-786234258-1060283338-1101951430-1001. CurrentImage: C:\Users\julien\OneDrive\Coding\_Projets de code\2025.12 Lively\assets\lockscreen-gif\appa-day-small.gif
+2025-12-11 14:04:42 [INFO] Permissions prior to taking ownership
+2025-12-11 14:04:42 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 14:04:42 [INFO]   Tout le monde: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:04:42 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:04:42 [INFO]   XPS15\julien: Read, Synchronize Allow (Inherit:None, Propagate:None)
+2025-12-11 14:04:42 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:04:48 [INFO] Permissions post taking ownership
+2025-12-11 14:04:48 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 14:04:48 [INFO]   Tout le monde: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:04:48 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:04:48 [INFO]   XPS15\julien: Read, Synchronize Allow (Inherit:None, Propagate:None)
+2025-12-11 14:04:48 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 14:04:48 [INFO] CreateDimmedFiles: Lockscreen images found in paths: C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z
+2025-12-11 14:04:48 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen.jpg
+2025-12-11 14:04:48 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 14:04:48 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen.jpg
+2025-12-11 14:04:48 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 14:04:48 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg
+2025-12-11 14:04:48 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 14:04:48 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg
+2025-12-11 14:04:49 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1366x768_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1440x900_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1920x1080_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___2560x1440_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___3840x2160_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___0108_0108.jpg -> image/x-png
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___0151_0151.jpg -> image/x-png
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___0194_0194.jpg -> image/x-png
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1366x768_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1440x900_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1920x1080_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___2560x1440_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___2560_1600_notdimmed.jpg -> image/x-png
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___3840x2160_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_A\LockScreen___3840_2400_notdimmed.jpg -> image/x-png
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___0108_0108.jpg -> image/pjpeg
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___0151_0151.jpg -> image/pjpeg
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___0194_0194.jpg -> image/pjpeg
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1366x768_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1440x900_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1920x1080_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___2560x1440_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___3840x2160_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_B\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___0108_0108.jpg -> image/x-png
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___0151_0151.jpg -> image/x-png
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___0194_0194.jpg -> image/x-png
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1400_1050_notdimmed.jpg -> image/pjpeg
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600.jpg -> image/pjpeg
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600_notdimmed.jpg -> image/pjpeg
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 14:04:49 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___3840_2400_notdimmed.jpg -> image/pjpeg
+2025-12-11 14:04:49 [INFO] Successfully set lockscreen
+2025-12-11 16:13:22 [INFO] Trying to set lockscreen
+2025-12-11 16:13:22 [INFO] User SID: S-1-5-21-786234258-1060283338-1101951430-1001. CurrentImage: C:\Users\julien\Pictures\LockscreenGif\wallpaper.gif
+2025-12-11 16:13:22 [INFO] Permissions prior to taking ownership
+2025-12-11 16:13:22 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 16:13:22 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:13:22 [INFO]   XPS15\julien: Read, Synchronize Allow (Inherit:None, Propagate:None)
+2025-12-11 16:13:22 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:13:26 [INFO] Permissions post taking ownership
+2025-12-11 16:13:26 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 16:13:26 [INFO]   Tout le monde: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:13:26 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:13:26 [INFO]   XPS15\julien: Read, Synchronize Allow (Inherit:None, Propagate:None)
+2025-12-11 16:13:26 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:13:26 [INFO] CreateDimmedFiles: Lockscreen images found in paths: C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z
+2025-12-11 16:13:26 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg
+2025-12-11 16:13:26 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 16:13:26 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg
+2025-12-11 16:13:26 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg -> image/gif
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg -> image/gif
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1400_1050_notdimmed.jpg -> image/pjpeg
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600.jpg -> image/pjpeg
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600_notdimmed.jpg -> image/pjpeg
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 16:13:26 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___3840_2400_notdimmed.jpg -> image/pjpeg
+2025-12-11 16:13:26 [INFO] Successfully set lockscreen
+2025-12-11 16:18:04 [INFO] Trying to set lockscreen
+2025-12-11 16:18:04 [INFO] User SID: S-1-5-21-786234258-1060283338-1101951430-1001. CurrentImage: C:\Users\julien\OneDrive\Coding\_Projets de code\2025.12 Lively\assets\lockscreen-gif\appa-night-small.gif
+2025-12-11 16:18:04 [INFO] Permissions prior to taking ownership
+2025-12-11 16:18:04 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 16:18:04 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:04 [INFO]   XPS15\julien: Read, Synchronize Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:04 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:09 [INFO] Permissions post taking ownership
+2025-12-11 16:18:09 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 16:18:09 [INFO]   Tout le monde: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:09 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:09 [INFO]   XPS15\julien: Read, Synchronize Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:09 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:09 [INFO] CreateDimmedFiles: Lockscreen images found in paths: C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z
+2025-12-11 16:18:09 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg
+2025-12-11 16:18:09 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 16:18:09 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg
+2025-12-11 16:18:09 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg -> image/gif
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg -> image/gif
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1400_1050_notdimmed.jpg -> image/pjpeg
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600.jpg -> image/pjpeg
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600_notdimmed.jpg -> image/pjpeg
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 16:18:09 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___3840_2400_notdimmed.jpg -> image/pjpeg
+2025-12-11 16:18:09 [INFO] Successfully set lockscreen
+2025-12-11 16:18:25 [INFO] Trying to set lockscreen
+2025-12-11 16:18:25 [INFO] User SID: S-1-5-21-786234258-1060283338-1101951430-1001. CurrentImage: C:\Users\julien\OneDrive\Coding\_Projets de code\2025.12 Lively\assets\lockscreen-gif\appa-night.gif
+2025-12-11 16:18:25 [INFO] Permissions prior to taking ownership
+2025-12-11 16:18:25 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 16:18:25 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:25 [INFO]   XPS15\julien: Read, Synchronize Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:25 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:30 [INFO] Permissions post taking ownership
+2025-12-11 16:18:30 [INFO] ACL for C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly (DACL only):
+2025-12-11 16:18:30 [INFO]   Tout le monde: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:30 [INFO]   AUTORITE NT\Système: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:30 [INFO]   XPS15\julien: Read, Synchronize Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:30 [INFO]   NT SERVICE\TrustedInstaller: FullControl Allow (Inherit:None, Propagate:None)
+2025-12-11 16:18:30 [INFO] CreateDimmedFiles: Lockscreen images found in paths: C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C, C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z
+2025-12-11 16:18:30 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg
+2025-12-11 16:18:30 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 16:18:31 [INFO] Copying main GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg
+2025-12-11 16:18:31 [INFO] Copying GIF to C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen.jpg -> image/gif
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_C\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen.jpg -> image/gif
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1366_768_notdimmed.jpg -> image/gif
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1400_1050_notdimmed.jpg -> image/pjpeg
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1440_900_notdimmed.jpg -> image/gif
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1080_notdimmed.jpg -> image/gif
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___1920_1200_notdimmed.jpg -> image/gif
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1440_notdimmed.jpg -> image/gif
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600.jpg -> image/pjpeg
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___2560_1600_notdimmed.jpg -> image/pjpeg
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___3840_2160_notdimmed.jpg -> image/gif
+2025-12-11 16:18:31 [INFO] C:\ProgramData\Microsoft\Windows\SystemData\S-1-5-21-786234258-1060283338-1101951430-1001\ReadOnly\LockScreen_Z\LockScreen___3840_2400_notdimmed.jpg -> image/pjpeg
+2025-12-11 16:18:31 [INFO] Successfully set lockscreen
