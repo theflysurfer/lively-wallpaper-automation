@@ -1,0 +1,14 @@
+{
+  "AppVersion": "2.0.0.0",
+  "Title": "Appa Day/Night Cycle",
+  "Thumbnail": "preview.png",
+  "Preview": "preview.png",
+  "Desc": "Avatar: The Last Airbender - Appa flying with automatic day/night cycle synchronized to real sun position in Paris. Art by rapho draws.",
+  "Author": "Based on rapho draws artwork",
+  "License": "Personal use only",
+  "Contact": "https://raphodraws.tumblr.com/",
+  "Type": 1,
+  "FileName": "index.html",
+  "Arguments": "",
+  "IsAbsolutePath": false
+}

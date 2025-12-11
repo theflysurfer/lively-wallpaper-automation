@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appa Day/Night Cycle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: #000;
+        }
+
+        .wallpaper-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 0.5s ease;
+        }
+
+        #bg-day {
+            background-image: url('bg-day.png');
+            z-index: 1;
+        }
+
+        #bg-night {
+            background-image: url('bg-night.png');
+            z-index: 2;
+            opacity: 0;
+        }
+
+        /* Floating clouds effect */
+        .clouds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            z-index: 10;
+            opacity: 0.3;
+            background:
+                radial-gradient(ellipse 100px 60px at 10% 20%, rgba(255,255,255,0.4) 0%, transparent 70%),
+                radial-gradient(ellipse 150px 80px at 30% 15%, rgba(255,255,255,0.3) 0%, transparent 70%),
+                radial-gradient(ellipse 120px 70px at 60% 25%, rgba(255,255,255,0.35) 0%, transparent 70%),
+                radial-gradient(ellipse 180px 90px at 85% 10%, rgba(255,255,255,0.25) 0%, transparent 70%);
+            animation: cloudMove 120s linear infinite;
+        }
+
+        @keyframes cloudMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Stars for night */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Info overlay (optional, can be hidden) */
+        #info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 12px;
+            z-index: 100;
+            opacity: 0.7;
+        }
+
+        #info.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wallpaper-container">
+        <div id="bg-day" class="layer"></div>
+        <div id="bg-night" class="layer"></div>
+        <div class="clouds"></div>
+        <div class="stars" id="stars"></div>
+    </div>
+    <div id="info">
+        <div>Sun: <span id="sun-status">Loading...</span></div>
+        <div>Blend: <span id="blend-value">0%</span></div>
+    </div>
+
+    <script>
+        // Paris coordinates
+        const LATITUDE = 48.8566;
+        const LONGITUDE = 2.3522;
+
+        // Transition duration in minutes (30 min before/after sunrise/sunset)
+        const TRANSITION_DURATION = 30;
+
+        // Show/hide debug info
+        const SHOW_INFO = true;
+
+        let sunTimes = null;
+
+        // Calculate sun position using simple algorithm
+        function calculateSunTimes(date) {
+            const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
+            const latRad = LATITUDE * Math.PI / 180;
+
+            // Approximate declination
+            const declination = -23.45 * Math.cos(2 * Math.PI * (dayOfYear + 10) / 365) * Math.PI / 180;
+
+            // Hour angle at sunrise/sunset
+            const cosHourAngle = -Math.tan(latRad) * Math.tan(declination);
+            const hourAngle = Math.acos(Math.max(-1, Math.min(1, cosHourAngle))) * 180 / Math.PI;
+
+            // Solar noon (approximate for Paris timezone)
+            const solarNoon = 12 - LONGITUDE / 15;
+
+            // Sunrise and sunset times (local solar time)
+            const sunriseHour = solarNoon - hourAngle / 15;
+            const sunsetHour = solarNoon + hourAngle / 15;
+
+            // Convert to Date objects (Paris time approximation)
+            const today = new Date(date);
+            today.setHours(0, 0, 0, 0);
+
+            const sunrise = new Date(today.getTime() + sunriseHour * 3600000);
+            const sunset = new Date(today.getTime() + sunsetHour * 3600000);
+
+            return { sunrise, sunset };
+        }
+
+        // Calculate blend factor (0 = day, 1 = night)
+        function calculateBlend(now) {
+            if (!sunTimes) return 0;
+
+            const { sunrise, sunset } = sunTimes;
+            const transitionMs = TRANSITION_DURATION * 60 * 1000;
+
+            const sunriseStart = sunrise.getTime() - transitionMs;
+            const sunriseEnd = sunrise.getTime() + transitionMs;
+            const sunsetStart = sunset.getTime() - transitionMs;
+            const sunsetEnd = sunset.getTime() + transitionMs;
+            const nowMs = now.getTime();
+
+            // Before sunrise transition starts: night
+            if (nowMs < sunriseStart) {
+                return 1;
+            }
+            // During sunrise transition: fade from night to day
+            else if (nowMs < sunriseEnd) {
+                return 1 - (nowMs - sunriseStart) / (sunriseEnd - sunriseStart);
+            }
+            // Daytime: day
+            else if (nowMs < sunsetStart) {
+                return 0;
+            }
+            // During sunset transition: fade from day to night
+            else if (nowMs < sunsetEnd) {
+                return (nowMs - sunsetStart) / (sunsetEnd - sunsetStart);
+            }
+            // After sunset transition ends: night
+            else {
+                return 1;
+            }
+        }
+
+        // Generate random stars
+        function generateStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = (Math.random() * 2 + 1) + 'px';
+                star.style.height = star.style.width;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Update wallpaper
+        function updateWallpaper() {
+            const now = new Date();
+
+            // Recalculate sun times at midnight
+            if (!sunTimes || now.getHours() === 0 && now.getMinutes() === 0) {
+                sunTimes = calculateSunTimes(now);
+            }
+
+            const blend = calculateBlend(now);
+
+            // Update layers
+            document.getElementById('bg-night').style.opacity = blend;
+            document.getElementById('stars').style.opacity = blend * 0.8;
+
+            // Adjust cloud opacity based on time
+            document.querySelector('.clouds').style.opacity = 0.2 + (1 - blend) * 0.2;
+
+            // Update info
+            if (SHOW_INFO) {
+                const sunStatus = blend < 0.3 ? 'Day' : blend > 0.7 ? 'Night' : 'Transition';
+                document.getElementById('sun-status').textContent = sunStatus;
+                document.getElementById('blend-value').textContent = Math.round(blend * 100) + '%';
+            }
+        }
+
+        // Initialize
+        function init() {
+            if (!SHOW_INFO) {
+                document.getElementById('info').classList.add('hidden');
+            }
+
+            generateStars();
+            sunTimes = calculateSunTimes(new Date());
+            updateWallpaper();
+
+            // Update every second for smooth transitions
+            setInterval(updateWallpaper, 1000);
+        }
+
+        // Lively API integration (if available)
+        function livelyPropertyListener(name, val) {
+            // Can add custom properties here
+        }
+
+        init();
+    </script>
+</body>
+</html>
