@@ -14,7 +14,9 @@ param(
 # Verify admin
 $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 if (-not $isAdmin) {
-    Write-Error "This script requires administrator privileges."
+    Write-Host "This script requires administrator privileges." -ForegroundColor Red
+    Write-Host "Please run PowerShell as Administrator, or use:" -ForegroundColor Yellow
+    Write-Host "  Start-Process powershell -Verb RunAs -ArgumentList '-File `"$PSCommandPath`" -GifPath `"$GifPath`"'" -ForegroundColor Cyan
     exit 1
 }
 
@@ -28,18 +30,26 @@ if (-not (Test-Path $GifPath)) {
 $GifPath = (Resolve-Path $GifPath).Path
 Write-Host "Setting lock screen from: $GifPath"
 
-# Get user SID - use provided SID or fall back to current user
-# When running as admin, we need the original user's SID, not the admin's
+# Get user SID - use provided SID or detect from existing SystemData folders
 if (-not $UserSid) {
-    # Try to get the logged-on user's SID from explorer.exe owner
-    $explorerProcess = Get-Process -Name explorer -ErrorAction SilentlyContinue | Select-Object -First 1
-    if ($explorerProcess) {
-        $explorerOwner = (Get-WmiObject Win32_Process -Filter "ProcessId = $($explorerProcess.Id)").GetOwner()
-        $userAccount = New-Object System.Security.Principal.NTAccount($explorerOwner.Domain, $explorerOwner.User)
-        $UserSid = $userAccount.Translate([System.Security.Principal.SecurityIdentifier]).Value
+    # First try: current user's SID (works if same user ran elevated)
+    $currentSid = ([Security.Principal.WindowsIdentity]::GetCurrent()).User.Value
+    $testPath = "C:\ProgramData\Microsoft\Windows\SystemData\$currentSid"
+
+    if (Test-Path $testPath -ErrorAction SilentlyContinue) {
+        $UserSid = $currentSid
     } else {
-        # Fallback to current user
-        $UserSid = ([Security.Principal.WindowsIdentity]::GetCurrent()).User.Value
+        # Second try: find existing user SID folder in SystemData (not SYSTEM S-1-5-18)
+        $systemDataPath = "C:\ProgramData\Microsoft\Windows\SystemData"
+        $userFolders = Get-ChildItem $systemDataPath -Directory -ErrorAction SilentlyContinue |
+            Where-Object { $_.Name -match '^S-1-5-21-' }
+
+        if ($userFolders) {
+            $UserSid = ($userFolders | Select-Object -First 1).Name
+        } else {
+            # Last resort: use current SID
+            $UserSid = $currentSid
+        }
     }
 }
 Write-Host "User SID: $UserSid"
@@ -93,9 +103,9 @@ $lockScreenFolder = "$readOnlyPath\LockScreen_C"
 # Create or clear the folder
 if (Test-Path $lockScreenFolder) {
     Write-Host "Clearing existing LockScreen_C folder..."
-    # Delete existing files
+    # Delete existing files (errors are OK - files will be overwritten anyway)
     Get-ChildItem $lockScreenFolder -ErrorAction SilentlyContinue | ForEach-Object {
-        Remove-Item $_.FullName -Force -ErrorAction SilentlyContinue
+        try { Remove-Item $_.FullName -Force -ErrorAction Stop } catch { }
     }
 } else {
     Write-Host "Creating LockScreen_C folder..."
